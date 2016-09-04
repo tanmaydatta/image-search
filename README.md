@@ -15,3 +15,6 @@
  * You can test it now on `http://localhost:8000/search/`
 
 If something doesn't work as expected then please feel free to contact me.
+
+#### Note:
+If you don't want to do all this, I can show it to you live via localtunnel. Contact me if this is the case.
