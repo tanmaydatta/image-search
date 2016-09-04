@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load staticfiles %}
+     <link href="{% static 'algolia.css' %}" rel="stylesheet" type="text/css" />
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+	  <legend style="text-align:center">Search Results for: {{query}}</legend>
+	  <ul style="list-style-type:none">
+	  {% for hit in res %}
+	  	<li><a href='{{hit.url}}'><img src="{{hit.url}}" /></a><li>
+	  	<br>
+	  	<!-- <br> -->
+	  {% endfor %}
+	  </ul>
+	  {% if page == 0 %}
+	  	<div class="col-md-4">
+          <a class="btn btn-primary" href=''>Previous</a>
+        </div>
+      {% else %}
+      	<div class="col-md-4">
+          <a class="btn btn-primary" href='?query={{query}}&page={{page|add:"-1"}}'>Previous</a>
+        </div>
+	  {% endif %}
+		<div class="col-md-4">
+			<a style="float:right" class="btn btn-primary" href='?query={{query}}&page={{page|add:"1"}}'>Next</a>
+		</div>
+  </body>
+</html>
