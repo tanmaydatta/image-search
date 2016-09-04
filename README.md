@@ -8,8 +8,8 @@
  * Change the mysql user and password in `settings.py`
 
 ##### How to Run:
- * Run `python manage.py migrate`
- * Create database `artifacia` and first import the mysql dump imto your local mysql db. 
+ * Create database `artifacia` and run `python manage.py migrate`
+ * Import the mysql dump imto your local mysql db. 
  * Run `python manage.py sync_algolia`.
  * Run `python manage.py runserver`
  * You can test it now on `http://localhost:8000/search/`
