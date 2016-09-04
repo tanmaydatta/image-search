@@ -23,8 +23,8 @@ def get_tags(url):
 
 def add_tags(tags):
 	for tag in tags:
-		tag_index.save_object({"tag": tag})
+		tag_index.add_object({"tag": tag})
 
-def get(query, page=0, rows=10):
+def get(query, page=0, rows=5):
 	res = index.search(query,{"page":page, "hitsPerPage":rows})
 	return res['hits']

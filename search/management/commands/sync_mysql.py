@@ -39,5 +39,3 @@ class Command(BaseCommand):
 					pass
 				print count
 			print 500*(i+1)
-		# adding tags in algolia
-		add_tags(x)
