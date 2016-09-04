@@ -10,7 +10,7 @@
 ##### How to Run:
  * Create database `artifacia` and run `python manage.py migrate`
  * Import the mysql dump imto your local mysql db. 
- * Run `python manage.py sync_algolia`.
+ * The data is already synced but has the mysql id as per my local system. If you wish to sync them according to your local db then run `python manage.py sync_algolia`. It will still work if you don't do this step.
  * Run `python manage.py runserver`
  * You can test it now on `http://localhost:8000/search/`
 
