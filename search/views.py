@@ -22,7 +22,7 @@ def home(request):
 def results(request):
 	query = request.GET.get("query")
 	page = request.GET.get("page", 0)
-	rows = request.GET.get("rows", 5)
+	rows = request.GET.get("rows", 6)
 	res = get(query, page, rows)
 	return render(request, "results.html", {"res": res, "query": query, "page": page})
 
@@ -31,6 +31,7 @@ def add(request):
 	if request.method != "POST":
 		return response("failed", "POST required")
 	url = request.POST.get("url", "")
+	callback = request.POST.get("callback", "/search")
 	if not url:
 		return response("failed", "url not entered")
 	name = url.split("/")[-1]
@@ -39,4 +40,4 @@ def add(request):
 		img.create()
 	except Exception as e:
 		return response("failed", "exception occured", exception=str(e))
-	return response("success", "ok")
+	return HttpResponseRedirect(callback)

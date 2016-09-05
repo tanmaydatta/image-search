@@ -25,6 +25,6 @@ def add_tags(tags):
 	for tag in tags:
 		tag_index.add_object({"tag": tag})
 
-def get(query, page=0, rows=5):
+def get(query, page=0, rows=6):
 	res = index.search(query,{"page":page, "hitsPerPage":rows})
 	return res['hits']

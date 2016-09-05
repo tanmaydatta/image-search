@@ -49,6 +49,8 @@
           <center>
             <div class="form-group">
               <input id="url" name="url" type="text" placeholder="Url of Image to Add" class="form-control">
+              <input hidden id="callback" name="callback" type="text">
+              <script type="text/javascript">document.getElementById("callback").value=location.href;</script>
               <button type="submit" class="submit-btn btn btn-primary">Add</button>
             </div>
           </center>
