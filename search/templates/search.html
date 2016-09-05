@@ -2,48 +2,61 @@
 <html>
   <head>
     {% load staticfiles %}
+     <link href="{% static 'styles.css' %}" rel="stylesheet" type="text/css" />
      <link href="{% static 'algolia.css' %}" rel="stylesheet" type="text/css" />
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <form class="form-horizontal" action="results">
-      <fieldset>
+    <div class="container-fluid">
 
-      <!-- Form Name -->
-      <legend style="text-align:center">Search Images by Tags</legend>
+    <div class="row" id="header-row">
+      <h1 class="col-xs-12">Search Images By Tag</h1>
+    </div>
 
-      <!-- Text input-->
-      <div class="form-group">
-        <label class="col-md-4 control-label" for="query">Text Input</label>  
-        <div class="col-md-4">
-        <input id="query" name="query" type="text" placeholder="tag" class="form-control input-md" style="width:100%">
-        <br>
-        <br>
-        <button type="submit" class="btn btn-primary" style="width:100%" href='http://54.191.216.134:80/'>Search</button>
-        <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
-        <script>
-          var client = algoliasearch("EEOFBFEXQW", "6855cefec93140337db53aa90765e0b4")
-          var index = client.initIndex('tags');
-          autocomplete('#query', {hint: true}, [
-            {
-              source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
-              displayKey: 'tag',
-              templates: {
-                suggestion: function(suggestion) {
-                  return suggestion._highlightResult.tag.value;
-                }
-              }
-            }
-          ]).on('autocomplete:selected', function(event, suggestion, dataset) {
-            console.log(suggestion, dataset);
-          });
-        </script>
+      <div class="row form-row">
+        <div class="col-md-12">
+
+          <form class="form-horizontal col-md-6" action="results">
+          <center>
+            <div class="form-group">
+                <input id="query" name="query" type="text" placeholder="Tag Name" class="form-control">
+                <button type="submit" class="submit-btn btn btn-primary">Search</button>
+                <script src="https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+                <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js"></script>
+                <script>
+                  var client = algoliasearch("EEOFBFEXQW", "6855cefec93140337db53aa90765e0b4")
+                  var index = client.initIndex('tags');
+                  autocomplete('#query', {hint: true}, [
+                    {
+                      source: autocomplete.sources.hits(index, {hitsPerPage: 5}),
+                      displayKey: 'tag',
+                      templates: {
+                        suggestion: function(suggestion) {
+                          return suggestion._highlightResult.tag.value;
+                        }
+                      }
+                    }
+                  ]).on('autocomplete:selected', function(event, suggestion, dataset) {
+                    console.log(suggestion, dataset);
+                  });
+                </script>
+            </div>
+            </center>
+          </form>
+
+          <form class="form-horizontal col-md-6" action="add" method="post">
+          <center>
+            <div class="form-group">
+              <input id="url" name="url" type="text" placeholder="Url of Image to Add" class="form-control">
+              <button type="submit" class="submit-btn btn btn-primary">Add</button>
+            </div>
+          </center>
+          </form>
+
         </div>
       </div>
-
-      </fieldset>
-    </form>
+    </div>
 
   </body>
 </html>

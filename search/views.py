@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import *
 import json
 from image_module import *
+from django.views.decorators.csrf import *
+from models import *
+import ipdb
 
 # Create your views here.
 def response(status, msg, *args):
@@ -22,3 +25,18 @@ def results(request):
 	rows = request.GET.get("rows", 5)
 	res = get(query, page, rows)
 	return render(request, "results.html", {"res": res, "query": query, "page": page})
+
+@csrf_exempt
+def add(request):
+	if request.method != "POST":
+		return response("failed", "POST required")
+	url = request.POST.get("url", "")
+	if not url:
+		return response("failed", "url not entered")
+	name = url.split("/")[-1]
+	img = Image(name=name, url=url)
+	try:
+		img.create()
+	except Exception as e:
+		return response("failed", "exception occured", exception=str(e))
+	return response("success", "ok")

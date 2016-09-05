@@ -8,6 +8,11 @@ class Image(models.Model):
     name = models.CharField(max_length=200)
     url = models.URLField(max_length=1500)
 
+    def create(self):
+        tags = get_tags(self.url)
+        add_tags(tags[:4])
+        self.save(tags[:4])
+
     def save(self, tags):
     	super(Image, self).save()
     	for tag in tags:

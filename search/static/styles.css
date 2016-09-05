@@ -1,0 +1,32 @@
+body {
+	background: linear-gradient(to right,#01ABE8,#02ADE5,#04B0E2,#05B1E1,#06B3DE,#07B4DC,#08B7D9,#0AB9D6,#0FC1CF,#13C7C6,#17CBBF,#1AD1BB,#1ED5B6,#1FD7B3,#20D9B0);
+}
+
+#header-row {
+	font-size: 2.3rem;
+	color: #224e61;
+	text-align: center;
+	background-color: rgba(255,255,255,0.3);
+}
+
+.form-row {
+	margin-top: 1.5rem;
+}
+
+input {
+	text-align: center;
+}
+
+.form-group {
+	margin-top: 1.5rem;
+	width: 80%;
+}
+
+.submit-btn  {
+	width: 9.5rem;
+	border-radius: 1px !important; 
+	font-weight: bold !important;
+	color: #fff;
+	background-color: #224e61 !important;
+	margin-top: 2rem !important;
+}
